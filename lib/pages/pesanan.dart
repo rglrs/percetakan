@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percetakan/core/app_styles.dart';
 
 class PesananPage extends StatelessWidget {
   const PesananPage({Key? key}) : super(key: key);
@@ -10,13 +11,7 @@ class PesananPage extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x1A000000),
-            blurRadius: 10,
-            offset: Offset(0, 4),
-          ),
-        ],
+        boxShadow: AppStyles.cardShadow,
       ),
       child: Column(
         children: [
@@ -86,8 +81,10 @@ class PesananPage extends StatelessWidget {
                 ),
               ),
               Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFA6F4C5),
                   borderRadius: BorderRadius.circular(8),
@@ -110,13 +107,14 @@ class PesananPage extends StatelessWidget {
               Expanded(
                 child: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: const Icon(Icons.edit, size: 16),
+                  icon: const Icon(Icons.edit, size: 16, color: Colors.white),
                   label: const Text(
                     'Edit',
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
                       fontFamily: 'Sans',
+                      color: Colors.white,
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -133,13 +131,18 @@ class PesananPage extends StatelessWidget {
               Expanded(
                 child: ElevatedButton.icon(
                   onPressed: () {},
-                  icon: const Icon(Icons.delete_outline, size: 16),
+                  icon: const Icon(
+                    Icons.delete_outline,
+                    size: 16,
+                    color: Colors.white,
+                  ),
                   label: const Text(
                     'Hapus',
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
                       fontFamily: 'Sans',
+                      color: Colors.white,
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -173,6 +176,7 @@ class PesananPage extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                   fontFamily: 'Sans',
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -186,41 +190,13 @@ class PesananPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FA),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 1,
-        centerTitle: true,
-        title: const Text(
-          'Percetakan Vizada - Sistem Managemen',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w600,
-            fontSize: 14,
-            fontFamily: 'Sans',
-          ),
-        ),
-      ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
         child: Column(
           children: [
-            const Text(
-              'Pesanan',
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
-                fontFamily: 'Sans',
-              ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: ListView(
-                children: [
-                  orderCard(),
-                  orderCard(),
-                ],
-              ),
-            ),
+            const Text('Pesanan', style: AppStyles.heading2),
+            const SizedBox(height: 24),
+            Expanded(child: ListView(children: [orderCard(), orderCard()])),
           ],
         ),
       ),
@@ -234,6 +210,7 @@ class PesananPage extends StatelessWidget {
             height: 1,
             fontWeight: FontWeight.w600,
             fontFamily: 'Sans',
+            color: Colors.white,
           ),
         ),
       ),

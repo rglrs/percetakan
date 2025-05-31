@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart' show kIsWeb, defaultTargetPlatform, TargetPlatform;
+import 'package:flutter/foundation.dart';
 
 class ApiConfig {
   static String get baseUrl {
@@ -8,23 +8,30 @@ class ApiConfig {
       return 'http://localhost:8000/api'; // Sesuaikan jika perlu
     }
     // Deteksi platform untuk mobile
+    print('Platform: ${defaultTargetPlatform.toString()}');
     if (defaultTargetPlatform == TargetPlatform.android) {
-      return 'http://10.0.2.2:8000/api'; // Untuk Android Emulator
+      return 'http://192.168.8.91:8000/api'; // Untuk Android Emulator
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       return 'http://localhost:8000/api'; // Untuk iOS Simulator
     } else {
-      // Untuk perangkat fisik atau platform lain,
-      // GANTI DENGAN IP LOKAL MESIN ANDA YANG TERHUBUNG KE JARINGAN YANG SAMA
-      // Pastikan untuk mengganti '192.168.X.X' dengan IP address Anda yang sebenarnya.
-      // Anda bisa mendapatkan IP address Anda dengan perintah 'ipconfig' (Windows) atau 'ifconfig' (macOS/Linux).
-      print(
-          "PERHATIAN: Menggunakan IP fallback untuk API. Pastikan IP ini benar untuk perangkat fisik Anda.");
-      return 'http://192.168.1.12:8000/api'; // << GANTI IP_ANDA SESUAI JARINGAN LOKAL
+      const String physicalDeviceIp =
+          '192.168.8.91'; // << GANTI IP INI DENGAN IP LOKAL KOMPUTER ANDA
+
+      if (kDebugMode) {
+        print("------------------------------------------------------------");
+        print("API CONFIG: Menggunakan IP untuk perangkat fisik.");
+        print("Pastikan IP '$physicalDeviceIp' adalah IP lokal komputer Anda");
+        print("dan perangkat terhubung ke jaringan Wi-Fi yang sama.");
+        print("Pastikan juga network_security_config.xml mengizinkan IP ini.");
+        print("------------------------------------------------------------");
+      }
+      return 'http://$physicalDeviceIp:8000/api';
     }
   }
 
   // Endpoint spesifik bisa ditambahkan di sini atau di controller
   static String get loginUrl => '$baseUrl/login';
   static String get inventoriesUrl => '$baseUrl/inventories';
+  static String get ordersUrl => '$baseUrl/orders';
   // Tambahkan endpoint lain jika ada
 }

@@ -5,20 +5,23 @@ import 'package:percetakan/core/app_colors.dart';
 class CustomTextField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
-  final String hintText;
+  final String? hintText;
   final TextInputType keyboardType;
   final bool obscureText;
   final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormatters;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
-   final int? maxLength;
+  final int? maxLength;
+  final int? maxLines;
+  final VoidCallback? onTap;
+  final bool readOnly;
 
   const CustomTextField({
     super.key,
     required this.label,
     required this.controller,
-    required this.hintText,
+    this.hintText,
     this.keyboardType = TextInputType.text, // Default ke text
     this.obscureText = false,
     this.validator,
@@ -26,6 +29,9 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.maxLength,
+    this.maxLines,
+    this.onTap,
+    this.readOnly = false,
   });
 
   @override
@@ -48,7 +54,10 @@ class CustomTextField extends StatelessWidget {
           keyboardType: keyboardType,
           obscureText: obscureText,
           inputFormatters: inputFormatters,
-          maxLength: maxLength, 
+          maxLength: maxLength,
+          maxLines: maxLines ?? 1,
+          onTap: onTap,
+          readOnly: readOnly,
           decoration: InputDecoration(
             hintText: hintText,
             border: OutlineInputBorder(

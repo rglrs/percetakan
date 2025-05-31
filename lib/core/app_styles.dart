@@ -53,6 +53,13 @@ class AppStyles {
     color: Colors.white,
   );
 
+  static const TextStyle label = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w600, // Sedikit tebal (semi-bold)
+    fontSize: 14,
+    color: Color(0xFF4A4A4A), // Warna abu-abu gelap agar mudah dibaca
+  );
+
   // Border Radius
   static const BorderRadius borderRadiusSmall = BorderRadius.all(
     Radius.circular(8),

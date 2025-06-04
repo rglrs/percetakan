@@ -498,6 +498,7 @@ class _PersediaanPageState extends State<PersediaanPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'fab-persediaan',
         backgroundColor: const Color(0xFF1C3A57),
         onPressed: _navigateToAddPersediaanPage,
         icon: const Icon(Icons.add, color: Colors.white),

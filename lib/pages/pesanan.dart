@@ -433,6 +433,7 @@ class _PesananPageState extends State<PesananPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
+        heroTag: 'fab-pesanan',
         backgroundColor: const Color(0xFF1C3A57),
         onPressed: _navigateToAddPesananPage,
         icon: const Icon(Icons.add, color: Colors.white),
